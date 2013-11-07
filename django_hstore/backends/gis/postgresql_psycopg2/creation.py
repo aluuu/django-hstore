@@ -3,7 +3,6 @@ from django import VERSION
 from django.conf import settings
 from django.db.backends.util import truncate_name
 from django.contrib.gis.db.backends.postgis.base import PostGISCreation
-from django.contrib.gis.db.models import GeometryField
 
 
 class DatabaseCreation(PostGISCreation):
@@ -34,7 +33,8 @@ class DatabaseCreation(PostGISCreation):
             return ['%s%s;' % (' '.join(clauses), tablespace_sql)]
         else:
             output = []
-            if isinstance(f, GeometryField):
+            from django.contrib.gis.db import models
+            if isinstance(f, models.GeometryField):
                 gqn = self.connection.ops.geo_quote_name
                 qn = self.connection.ops.quote_name
                 db_table = model._meta.db_table
