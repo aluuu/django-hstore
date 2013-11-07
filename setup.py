@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='django-hstore',
-    version='1.0.0',
+    version='1.0.3',
     description="Support for PostgreSQL's hstore for Django.",
     long_description=open('README.rst').read(),
     author='Jordan McCoy',
@@ -15,5 +15,7 @@ setup(
         'django_hstore.backends.postgresql_psycopg2',
         'django_hstore.backends.gis',
         'django_hstore.backends.gis.postgresql_psycopg2',
+        'django_hstore.backends.gis',
+        'django_hstore.backends'
     ],
 )
